@@ -1,0 +1,125 @@
+import { http, HttpResponse } from 'msw';
+import userActor from '../actors/user.actor';
+
+const { context: userContext } = userActor.getSnapshot();
+const { userDetails } = userContext;
+
+export default http.get('*/configuration', () => {
+  return HttpResponse.json({
+    token:
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzM5Mjg5NDgsImlhdCI6MTczMzkyODA0OCwiYXV0aF90aW1lIjoxNzMzOTIzOTAwLCJqdGkiOiI5NTY1N2YwYS1kZDAxLTQ4NDQtYmViMy0wNzg0YjAyNmRiMzkiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjQyMDAiLCJhdWQiOlsiYWNjb3VudCIsIndvcmtzcGFjZXMiXSwic3ViIjoiYWdlbnQ3MiIsInR5cCI6IkJlYXJlciIsImF6cCI6IndvcmtzcGFjZXMiLCJzZXNzaW9uX3N0YXRlIjoiMjc5OTk2N2UtOTRiOC00MDljLTkzNGQtYjYzMDQzMjM1OGY1IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6W10sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJBZ2VudCIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJ1c2VyIiwiZGVmYXVsdC1yb2xlcy1wcm1lYnEiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBlbWFpbCBwcm9maWxlIG9mZmxpbmVfYWNjZXNzIiwic2lkIjoiMjc5OTk2N2UtOTRiOC00MDljLTkzNGQtYjYzMDQzMjM1OGY1IiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImlkcCI6ImZsZXgiLCJuYW1lIjoiYWdlbnQ3MiIsInRlbmFudElkIjoiUFJNRUJRIiwiZ3JvdXBzIjpbIi9QUk1FQlEiXSwicHJlZmVycmVkX3VzZXJuYW1lIjoiYm9qYW4xQGF4cGNkZXZvcHMuY29tIiwidXNlclVVSUQiOiI3ZjBhOWVmOC0wYmEwLTQ2YmEtYTY2MC1lMjU3ZDAxMDAxZjAiLCJnaXZlbl9uYW1lIjoiQWdlbnQ3MiIsImZhbWlseV9uYW1lIjoiQWdlbnQ3MiIsImVtYWlsIjoiYm9qYW4xQGF4cGNkZXZvcHMuY29tIn0.03-nGQLerzr9e_a9l_O1Qw_11MaKgvkRPwD9VNf5HTU',
+    user: {
+      id: '7f0a9ef8-0ba0-46ba-a660-e257d01001f0',
+      displayName: userDetails.displayName,
+      firstName: userDetails.firstName,
+      lastName: userDetails.lastName,
+      roleId: userDetails.roleId,
+      supervisorUserId: userDetails.supervisorUserId,
+      tenantId: userDetails.tenantId,
+      userHandle: userDetails.userHandle,
+      versionId: 0,
+      analyticsRoleId: '',
+    },
+    defaultUserProfileId: 'Remote Profile Agent72',
+    configuration: {
+      coBrowseURL: '127.0.0.1',
+      customerManagementFQDN: '127.0.0.1',
+      workspacesLogUploadLocation: '/var/log/',
+      workspacesLogsDownloadEnabled: true,
+      workspacesLogsDataPrivacyEnabled: false,
+      supervisorReportingURL: '127.0.0.1',
+      aawgFQDN: 'value":"127.0.0.1',
+      aadsFQDN: '',
+      welcomePage: 'http://kafka.apache.org/',
+      salesforceConfiguration: {
+        ApplicationName: 'CC_Client',
+        CRMIntegrationEnabled: 'true',
+        ConsumerKey:
+          '3MVG98_Psg5cppyYaaOW5FZdV8rTYZuaYxGoP4wz97OSfkLYl0EBZrXQ3B8lbWPqs5NAcPAOi5rPdpD4vP9nd',
+        ConsumerSecretKey: '3723015645493377233',
+        ProxyServerURL: 'http://10.134.138.178:9090',
+        SalesforceEndpoint: 'https://eu6.salesforce.com',
+      },
+      hotdesk: true,
+      observeIndicatorEnabled: false,
+      isWebRTC: false,
+      screenPopConfiguration: {
+        DisplayInternalScreenpopWidgetFirstOnAgentAccept: 'true',
+        EnableScreenpopWithoutAgentprompting: 'false',
+        LaunchExternalScreenpopsOnAgentAccept: 'true',
+      },
+      ocpAddress: '127.0.0.1',
+      awfosEnabled: false,
+      genericChannelFriendlyName: 'Generic',
+      genericChannelIcon: 'Icon',
+      environmentType: 'AACC',
+      authLogoutURL: '',
+      platform: 'ADF',
+      groups: [],
+      uxProfileId: '',
+      uxProfileName: '',
+      mailboxNumber: '',
+      trunkAccessCode: '',
+      uxWorkspacesLayoutId: '',
+      customerProviderApiKey: '',
+      onlineHelpURL:
+        'https://documentation.avaya.com/{locale}/bundle/UsingWorkspacesExperiencePlatform10/page/Avaya_Workspaces_overview.html',
+      clientPreferences: [],
+      startWorkState: 'UNSPECIFIED',
+      maxLocationCount: 0,
+      aadsPort: '',
+      maxSessionCount: 1,
+      workspacesLogUploadEnabled: false,
+      emailDraftAutoSaveInterval: 30,
+      messagingEnableEmojis: false,
+      messagingEnableLocations: false,
+      messagingEnableAudio: false,
+      messagingEnableVideo: false,
+      messagingEnableAttachments: false,
+      interimResponseEnabled: false,
+    },
+    userProfileDetailsList: [
+      {
+        userProfile: {
+          profileName: 'Remote Profile Agent72',
+          id: 'cae1d27d-befb-438a-b750-938866260cc3',
+        },
+        defaultResource: {
+          id: '',
+          providerId: 'c7501d95-78f8-429a-b341-c10478e5c2e1',
+          address: '600072',
+          displayName: '',
+          resourceType: 'DEFAULT',
+          channelTypes: ['VOICE'],
+          lineAppearances: 3,
+          providerType: 'IX_VOICE',
+        },
+        numberResources: 3,
+      },
+    ],
+    templateGroups: [],
+    layoutPreferences: [
+      {
+        id: 'a1e0c912-224e-468d-9352-72138493f2a0',
+        group: 'WORKSPACES',
+        key: 'LibraryEnabled',
+        value: 'true',
+        type: 'SYSTEM',
+      },
+      {
+        id: '690f08ce-d971-4321-8a30-33da9fbd9051',
+        group: 'WORKSPACES',
+        key: 'LibraryUri',
+        value: 'http://10.134.146.15:5003/',
+        type: 'SYSTEM',
+      },
+    ],
+    userPreferences: [],
+    emailSignaturePreferences: [],
+    authTimestamp: '2024-12-11T14:40:53.305515679Z',
+    streamServers: [],
+    providerPreferences: [],
+    locations: [],
+    features: [],
+  });
+});

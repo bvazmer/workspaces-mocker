@@ -31,15 +31,7 @@ export default http.get('*/configuration', () => {
       aawgFQDN: 'value":"127.0.0.1',
       aadsFQDN: '',
       welcomePage: 'http://kafka.apache.org/',
-      salesforceConfiguration: {
-        ApplicationName: 'CC_Client',
-        CRMIntegrationEnabled: 'true',
-        ConsumerKey:
-          '3MVG98_Psg5cppyYaaOW5FZdV8rTYZuaYxGoP4wz97OSfkLYl0EBZrXQ3B8lbWPqs5NAcPAOi5rPdpD4vP9nd',
-        ConsumerSecretKey: '3723015645493377233',
-        ProxyServerURL: 'http://10.134.138.178:9090',
-        SalesforceEndpoint: 'https://eu6.salesforce.com',
-      },
+      salesforceConfiguration: {},
       hotdesk: true,
       observeIndicatorEnabled: false,
       isWebRTC: false,

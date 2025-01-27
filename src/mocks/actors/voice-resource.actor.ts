@@ -1,4 +1,4 @@
 import { createActor } from 'xstate';
-import voiceResourceMachine from '../machines/voiceResourceMachine';
+import voiceResourceMachine from '@/mocks/machines/voiceResourceMachine';
 
 export default createActor(voiceResourceMachine);

@@ -1,6 +1,6 @@
 import { ws } from 'msw';
-import userActor from '../actors/user.actor';
-import clientActor from '../actors/client.actor';
+import userActor from '@/mocks/actors/user.actor';
+import clientActor from '@/mocks/actors/client.actor';
 
 const getDataFromStore = () => {
   const { client: clientData } = clientActor.getSnapshot().context;

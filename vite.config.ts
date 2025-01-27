@@ -1,28 +1,37 @@
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import tsconfigPaths from 'vite-tsconfig-paths';
+import dts from 'vite-plugin-dts';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tsconfigPaths()],
+  plugins: [
+    react(),
+    dts({
+      insertTypesEntry: true,
+      rollupTypes: true,
+      tsconfigPath: './tsconfig.app.json',
+    }),
+  ],
 
   define: {
     'process.env': {},
   },
 
-  // resolve: {
-  //   alias: {
-  //     '@': path.resolve(__dirname, './src'),
-  //   },
-  // },
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src'),
+    },
+  },
 
   build: {
     lib: {
-      entry: 'src/main.tsx',
-      name: 'Workspaces-mocker',
-      fileName: 'mocker',
-      formats: ['es', 'cjs'],
+      entry: resolve(__dirname, 'src/main.tsx'),
+      name: 'WorkspacesMocker',
+      fileName: 'index',
     },
-    target: 'ESNext',
   },
 });

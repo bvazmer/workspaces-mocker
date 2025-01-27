@@ -1,5 +1,5 @@
 import { http, HttpResponse } from 'msw';
-import userActor from '../actors/user.actor';
+import userActor from '@/mocks/actors/user.actor';
 
 const { context: userContext } = userActor.getSnapshot();
 const { userDetails } = userContext;

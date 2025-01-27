@@ -1,5 +1,5 @@
 import { createMachine, sendTo } from 'xstate';
-import userMachine from './userMachine';
+import userMachine from '@/mocks/machines/userMachine';
 
 export default createMachine({
   context: ({ spawn }) => ({

@@ -1,4 +1,4 @@
-import userActor from '../actors/user.actor';
+import userActor from '@/mocks/actors/user.actor';
 import { http, HttpResponse } from 'msw';
 
 export default http.post('*/users/*/sessions/*', ({ request }) => {

@@ -1,6 +1,7 @@
 import App from './App';
 import r2wc from '@r2wc/react-to-web-component';
+import { initMocks } from '@/mocks/browser';
 
-const MockerWC = r2wc(App, { props: ['text'] });
+const DashboardWebComponent = r2wc(App, { props: ['text'] });
 
-export default MockerWC;
+export { initMocks, DashboardWebComponent };

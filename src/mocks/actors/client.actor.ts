@@ -1,4 +1,4 @@
 import { createActor } from 'xstate';
-import clientMachine from '../machines/clientMachine';
+import clientMachine from '@/mocks/machines/clientMachine';
 
 export default createActor(clientMachine);

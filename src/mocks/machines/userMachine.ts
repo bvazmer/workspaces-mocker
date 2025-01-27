@@ -1,5 +1,5 @@
 import { assign, emit, sendTo, setup } from 'xstate';
-import voiceResourceMachine from './voiceResourceMachine';
+import voiceResourceMachine from '@/mocks/machines/voiceResourceMachine';
 
 const userMachine = setup({
   actors: {

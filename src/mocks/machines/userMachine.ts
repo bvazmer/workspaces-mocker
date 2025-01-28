@@ -74,7 +74,7 @@ const userMachine = setup({
       stateReason: 'DEFAULT',
     },
   }),
-  initial: 'LOGGED_OUT',
+  initial: 'ACTIVATED',
   states: {
     ACTIVATED: {
       entry: 'setActivated',
@@ -91,7 +91,7 @@ const userMachine = setup({
           target: 'NOT_READY',
         },
         logout: {
-          target: 'LOGGED_OUT',
+          target: 'ACTIVATED',
         },
       },
     },
@@ -102,7 +102,7 @@ const userMachine = setup({
           target: 'READY',
         },
         logout: {
-          target: 'LOGGED_OUT',
+          target: 'ACTIVATED',
         },
       },
     },

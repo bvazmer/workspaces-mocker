@@ -1,18 +1,16 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import userActor from '@/mocks/actors/user.actor';
 
-const App: FC<{ text: string }> = ({ text = 'Login' }) => {
-  const handleClick = () => {
-    userActor.send(new Event('login'));
-  };
+const App: FC<{ text: string }> = () => {
+  useEffect(() => {
+    userActor.send(new Event('setupFinished'));
+  }, []);
+  const snapshot = userActor.getSnapshot();
+  const { value } = snapshot;
   return (
-    <Button
-      style={{ position: 'fixed', zIndex: 110000 }}
-      type="button"
-      onClick={() => handleClick()}
-    >
-      {text}
+    <Button type="button" onClick={() => {}}>
+      {value}
     </Button>
   );
 };

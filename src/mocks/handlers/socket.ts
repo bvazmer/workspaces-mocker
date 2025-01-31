@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 const socketHandler = ws.link('ws://*/broadcast').addEventListener('connection', ({ client }) => {
   const handleUserSessionUpdate = () => {
     const { context: userContext, value: userState } = userActor.getSnapshot();
-    const { capabilities, userSession } = userContext;
+    const { userSession } = userContext;
 
     client.send(
       JSON.stringify({
@@ -14,14 +14,11 @@ const socketHandler = ws.link('ws://*/broadcast').addEventListener('connection',
         notificationChangeType: 'UPDATE',
         newValue: {
           ...userSession,
-          capabilities,
           currentState: userState,
         },
       }),
     );
   };
-
-  userActor.start();
 
   userActor.on('*', ({ type }) => {
     switch (type) {

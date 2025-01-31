@@ -6,6 +6,9 @@ const voiceResourceMachine = setup({
       id: 'VOICE';
       address: string;
       displayName: string;
+      lineAppearanceCount?: number;
+      mailboxNumber?: string;
+      trunkAccessCode?: string;
     },
   },
 }).createMachine({

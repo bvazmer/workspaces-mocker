@@ -3,16 +3,19 @@ import { deactivateHandler, stateChangeHandler } from '@/mocks/handlers/session'
 import socketHandler from '@/mocks/handlers/socket';
 import statusHandler from '@/mocks/handlers/status';
 import { imageHandler, videoHandler } from '@/mocks/handlers/assets';
-import configurationHandler from '@/mocks/handlers/administration/configuration';
+import activationConfigurationHandler from '@/mocks/handlers/administration/activationConfiguration';
+import authenticationConfiguration from '@/mocks/handlers/administration/authenticationConfiguration.ts';
 import applicationsHandler from '@/mocks/handlers/uwf/applications';
 import applicationDataHandler from '@/mocks/handlers/uwf/applicationData';
 import { KJUR } from 'jsrsasign';
 import { v4 as uuidv4 } from 'uuid';
+import userActor from '@/mocks/actors/user.actor.ts';
 
 export const handlers = [
-  configurationHandler,
   applicationsHandler,
   applicationDataHandler,
+  authenticationConfiguration,
+  activationConfigurationHandler,
   socketHandler,
   stateChangeHandler,
   deactivateHandler,
@@ -67,7 +70,13 @@ export const initMocks = async () => {
   );
   document.cookie = `sso-access=${jwt}`;
 
-  return setupWorker(...handlers).start({
-    onUnhandledRequest: 'bypass',
+  return new Promise((resolve) => {
+    userActor.start();
+    userActor.on('setupFinished', () => {
+      const workerInstance = setupWorker(...handlers).start({
+        onUnhandledRequest: 'bypass',
+      });
+      resolve(workerInstance);
+    });
   });
 };

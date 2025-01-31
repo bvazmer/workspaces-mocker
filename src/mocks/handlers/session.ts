@@ -2,12 +2,12 @@ import { http, HttpResponse } from 'msw';
 import userActor from '@/mocks/actors/user.actor';
 
 export const stateChangeHandler = http.post(
-  '*/users/{user_id}/sessions/{session_id}',
+  '*/users/:userId/sessions/:sessionId',
   ({ request }) => {
     const searchParams = new URL(request.url).searchParams;
     const operation = searchParams.get('operation');
     if (!operation) {
-      throw new HttpResponse(null, { status: 400 });
+      return new HttpResponse(null, { status: 400 });
     }
     userActor.send({ type: camalise(operation), reason: searchParams.get('reason') });
     return HttpResponse.text();
@@ -15,7 +15,7 @@ export const stateChangeHandler = http.post(
 );
 
 export const deactivateHandler = http.delete(
-  '*/users/{user_id}/sessions/{session_id}',
+  '*/users/:userId/sessions/:sessionId',
   () => new HttpResponse(null, { status: 204 }),
 );
 

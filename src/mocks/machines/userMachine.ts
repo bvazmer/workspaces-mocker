@@ -137,7 +137,7 @@ const userMachine = setup({
           canDeactivate: false,
           canLogin: false,
           canLogout: true,
-          canSetNotReady: true,
+          canSetNotReady: false,
           canSetReady: true,
         },
       }),
@@ -198,8 +198,8 @@ const userMachine = setup({
     },
     userSession: {
       capabilities: {
-        canDeactivate: true,
-        canLogin: true,
+        canDeactivate: false,
+        canLogin: false,
         canLogout: false,
         canSetNotReady: false,
         canSetReady: false,
@@ -221,6 +221,13 @@ const userMachine = setup({
     SETUP: {
       on: {
         setupFinished: {
+          target: 'UNKNOWN',
+        },
+      },
+    },
+    UNKNOWN: {
+      on: {
+        activate: {
           target: 'ACTIVATED',
         },
       },

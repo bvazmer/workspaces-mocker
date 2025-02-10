@@ -22,6 +22,7 @@ const socketHandler = ws.link('ws://*/broadcast').addEventListener('connection',
 
   userActor.on('*', ({ type }) => {
     switch (type) {
+      case 'activate':
       case 'login':
       case 'logout':
       case 'ready':

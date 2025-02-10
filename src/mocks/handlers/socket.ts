@@ -53,8 +53,6 @@ const socketHandler = ws.link('ws://*/broadcast').addEventListener('connection',
           agentJourney: false,
         }),
       );
-      // send initial user state
-      handleUserSessionUpdate();
     }
   });
 });
